@@ -57,6 +57,12 @@ let boxSpeed = -3;
 let VelocityY = 0;
 let Gravity = 0.25;
 
+
+let Retry = document.getElementById("RetryButton")
+
+
+
+
 console.log(player)
 window.onload = function() {
     //Display
@@ -76,6 +82,7 @@ window.onload = function() {
     requestAnimationFrame(update);
     
     document.addEventListener("keydown",movePlayer);
+    Retry.addEventListener("click",gameReset)
 
     boxImg = new Image();
     boxImg.src = "https://imgs.search.brave.com/rCwzgfqJCiOhPZXu09NZoQvYZ4Eym6ptNDsmHZdGdRs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy85/LzkzL01hcmlvX3Bp/cGUucG5nPzIwMTUw/ODE4MDEzODE5";//TODO
@@ -86,7 +93,7 @@ window.onload = function() {
 
 // Function to create a box at a random time interval
 function createBoxWithRandomInterval() {
-    setTimeout("",1)
+    setTimeout("",2)
     if(gameOver) {
         return;
     }
@@ -165,7 +172,7 @@ function movePlayer(e){
 
 function createBox(e){
 
-    setTimeout("",1)
+    setTimeout("",2)
 
     if(gameOver){
         return;
@@ -194,16 +201,30 @@ function onCollision(obj1,obj2){
 }
 
 function gameReset(){
-    if(live > 0 ){
-        gameOver = false;
-        live -= 1;
-        
+    setTimeout(()=>{
+        console.log("WaitingFor 1 Sec")
+    },1000)
+    if(gameOver){
+        if(live > 0 ){
+            
+            gameOver = false;
+            
+            live -= 1;
+            
 
-        score = 0;
-        time = 0;
-        boxesArray = [];
-        VelocityY = 0; // Reset gravity effect
-        player.y = playerY; // Reset player position
-        createBoxWithRandomInterval
+            score = 0;
+            time = 0;
+            boxesArray = [];
+            VelocityY = 0; // Reset gravity effect
+            player.y = playerY; // Reset player position
+            wait(2000)
+        }
     }
 }
+
+function wait(ms) {
+    setTimeout(() => {
+        createBoxWithRandomInterval()
+    }, ms);
+}
+
