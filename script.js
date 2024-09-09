@@ -86,6 +86,7 @@ window.onload = function() {
 
 // Function to create a box at a random time interval
 function createBoxWithRandomInterval() {
+    setTimeout("",1)
     if(gameOver) {
         return;
     }
@@ -163,9 +164,14 @@ function movePlayer(e){
 }
 
 function createBox(e){
+
+    setTimeout("",1)
+
     if(gameOver){
-        return
+        return;
     }
+    
+
 
     let box = {
         img:boxImg,
@@ -189,14 +195,15 @@ function onCollision(obj1,obj2){
 
 function gameReset(){
     if(live > 0 ){
-        gameOver =false
+        gameOver = false;
         live -= 1;
+        
+
         score = 0;
         time = 0;
-        boxesArray.length = 0;
+        boxesArray = [];
         VelocityY = 0; // Reset gravity effect
         player.y = playerY; // Reset player position
-
-        createBoxWithRandomInterval();
+        createBoxWithRandomInterval
     }
 }
