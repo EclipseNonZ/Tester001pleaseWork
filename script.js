@@ -193,10 +193,9 @@ function gameReset(){
         live -= 1;
         score = 0;
         time = 0;
-        boxesArray = [];
+        boxesArray.length = 0;
         VelocityY = 0; // Reset gravity effect
         player.y = playerY; // Reset player position
 
-        createBoxWithRandomInterval();
     }
 }
