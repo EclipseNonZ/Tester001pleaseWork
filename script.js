@@ -197,5 +197,6 @@ function gameReset(){
         VelocityY = 0; // Reset gravity effect
         player.y = playerY; // Reset player position
 
+        createBoxWithRandomInterval();
     }
 }
