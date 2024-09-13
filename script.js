@@ -190,7 +190,7 @@ function update() {
     }
 
     
-    context.fillStyle = "black";
+    context.fillStyle = "White";
     score++;
     time += 0.01;
     context.font = "normal bold 20px Monospace";
@@ -208,11 +208,13 @@ function update() {
     }else{
         context.fillText("Parry Cooldown:Ready!" , 10 , 60)
     }
-    if (time == 60) {
+    if (time >= 60) {
         gameOver = true;
-        context.font = "normal bold 20px Monospace";
+        context.font = "normal bold 40px Monospace";
         context.textAlign = "center";
-        context.fillText("You Won! With Score :" + score, boardWidth / 2, boardHeight / 2);
+        context.fillText("You Won!", boardWidth / 2, boardHeight / 2);
+        context.font = "normal bold 20px Monospace"
+        context.fillText("score : "+score,boardWidth / 2, (boardHeight / 2)+20)
         
         setTimeout(() => {
             Retry.style.display = "block";
